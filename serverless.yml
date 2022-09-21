@@ -5,6 +5,9 @@ provider:
   name: aws
   runtime: nodejs14.x
   region: us-west-2
+  httpApi:
+    cors: true
+
   iamRoleStatements:
     - Effect: Allow
       Action:
@@ -34,12 +37,27 @@ functions:
           path: /api/products
           method: get
 
+  getProduct:
+    handler: src/getProduct.getProduct
+    events:
+      - httpApi:
+          path: /api/products/{id}
+          method: get
+
+  # tablas de usuarios
   createUser:
     handler: src/addUser.addUser
     events:
       - httpApi:
           path: /api/users
           method: post
+
+  getUsers:
+    handler: src/getUsers.getUsers
+    events:
+      - httpApi:
+          path: /api/users
+          method: get
 
 resources:
   Resources:

@@ -13,8 +13,8 @@ const getProducts = async (event) => {
     const products = result.Items;
 
     return {
-      status: 200,
-      body: { products },
+      //status: 200,
+      products,
     };
   } catch (error) {
     console.log(error);

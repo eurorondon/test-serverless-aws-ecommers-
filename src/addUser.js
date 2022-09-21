@@ -6,7 +6,7 @@ const addUser = async (event) => {
   const dynamodb = new AWS.DynamoDB.DocumentClient();
 
   const { name, email, password, isadmin } = JSON.parse(event.body);
-  const createAt = new Date();
+  const createdAt = new Date();
   const id = v4();
 
   const newUser = {
@@ -15,7 +15,7 @@ const addUser = async (event) => {
     email,
     password,
     isadmin,
-    createAt,
+    createdAt,
   };
 
   await dynamodb
